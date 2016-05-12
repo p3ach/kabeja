@@ -16,11 +16,12 @@
 package org.kabeja.common;
 
 import org.kabeja.DraftDocument;
+import org.kabeja.entities.EntityAccept;
 import org.kabeja.math.Bounds;
 import org.kabeja.math.Extrusion;
 
 
-public interface DraftEntity {
+public interface DraftEntity extends EntityAccept {
 
 	public abstract long getID();
 

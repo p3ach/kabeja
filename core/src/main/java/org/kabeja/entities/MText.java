@@ -42,7 +42,12 @@ public class MText extends Text {
     private double refheight = 0.0;
 
     
-    public void setAttachmentPoint(int value) {
+    @Override
+	public Object accept(EntityVisitor entityVisitor) {
+		return entityVisitor.visit(this);
+	}
+
+	public void setAttachmentPoint(int value) {
         this.attachmentpointLocation = value;
     }
 

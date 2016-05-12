@@ -57,7 +57,9 @@ public class Layer {
     private int bitField;
   
     
-    
+    public Object accept(final LayerVisitor layerVisitor) {
+    	return layerVisitor.visit(this);
+    }
  
 
     /**
@@ -325,4 +327,11 @@ public class Layer {
 	public boolean hasLineType(){
 	    return Utils.isBitEnabled(this.bitField, BIT_OWN_LINETYPE);
 	}
+
+	@Override
+	public String toString() {
+		return String.format("layer [name [%s] id [%s]]", getName(), getID());
+	}
+	
+	
 }

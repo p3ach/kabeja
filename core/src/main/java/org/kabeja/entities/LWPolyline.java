@@ -55,7 +55,12 @@ public class LWPolyline extends Entity{
    
   
 
-    public LWPolyline() {
+    @Override
+	public Object accept(final EntityVisitor entityVisitor) {
+		return entityVisitor.visit(this);
+	}
+
+	public LWPolyline() {
     }
 
     public void setConstantWidth(double width) {

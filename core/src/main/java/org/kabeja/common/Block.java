@@ -55,6 +55,10 @@ public class Block {
 
     }
 
+    public Object accept(final BlockVisitor blockVisitor) {
+    	return blockVisitor.visit(this);
+    }
+    
     public Bounds getBounds() {
     
         Bounds bounds = new Bounds();
@@ -231,8 +235,9 @@ public class Block {
     public void setLayer(Layer layer) {
         this.layer = layer;
     }
-    
-    
-    
-    
+
+	@Override
+	public String toString() {
+		return String.format("block [name [%s] id [%s] [%s]]", getName(), getID(), getLayer());
+	}
 }

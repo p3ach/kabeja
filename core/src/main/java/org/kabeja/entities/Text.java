@@ -31,6 +31,7 @@ import org.kabeja.math.TransformContext;
  * 
  */
 public class Text extends Entity {
+	
     public static final double DEFAULT_FONT_SIZE = 8;
 
     public static final int VALIGN_BASELINE = 0;
@@ -105,7 +106,14 @@ public class Text extends Entity {
 
 
 
-    public void setDocument(DraftDocument doc) {
+    @Override
+	public Object accept(EntityVisitor entityVisitor) {
+		// TODO Auto-generated method stub
+		return entityVisitor.visit(this);
+	}
+
+
+	public void setDocument(DraftDocument doc) {
         super.setDocument(doc);
     }
 

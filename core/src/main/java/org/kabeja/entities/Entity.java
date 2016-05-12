@@ -63,6 +63,10 @@ public abstract class Entity implements DraftEntity {
 		init();
 	}
 
+	public Object accept(final EntityVisitor entityVisitor) {
+		return entityVisitor.visit(this);
+	}
+
 	/**
 	 * Set the owner document of the entity
 	 * 
@@ -387,7 +391,4 @@ public abstract class Entity implements DraftEntity {
 	protected boolean isBitEnabled(int bit) {
 		return Utils.isBitEnabled(this.entityFlags, bit);
 	}
-
-	public abstract void transform(TransformContext context);
-
 }

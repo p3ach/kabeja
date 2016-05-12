@@ -96,6 +96,10 @@ public class DraftDocument {
 		this.rootDictionary.setDocument(this);
 	}
 
+	public Object accept(final DraftDocumentVisitor draftDocumentVisitor) {
+		return draftDocumentVisitor.visit(this);
+	}
+	
 	public void addLayer(Layer layer) {
 		layer.setDocument(this);
 		this.layers.put(layer.getName(), layer);

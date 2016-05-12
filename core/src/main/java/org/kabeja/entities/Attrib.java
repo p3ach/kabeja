@@ -31,6 +31,11 @@ public class Attrib extends Text {
 	
 	private static final int LAZY_INDEX_PROMPT=10;
 	
+	@Override
+	public Object accept(EntityVisitor entityVisitor) {
+		return entityVisitor.visit(this);
+	}
+
 	public Type<?> getType() {
 		return Type.TYPE_ATTRIB;
 	}

@@ -49,9 +49,13 @@ public class Polyline extends Entity {
     protected int rows = 0;
     protected int columns = 0;
     protected Point3D elevation = new Point3D(0,0,0);
-
   
-    public Bounds getBounds() {
+    @Override
+	public Object accept(final EntityVisitor entityVisitor) {
+		return entityVisitor.visit(this);
+	}
+
+	public Bounds getBounds() {
         Bounds bounds = new Bounds();
 
         Iterator<Vertex> i = vertices.iterator();
