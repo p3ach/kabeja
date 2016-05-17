@@ -43,9 +43,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 
 import org.kabeja.DraftDocument;
 import org.kabeja.dxf.parser.filter.DXFStreamFilter;
+import org.kabeja.entities.EntityVisitor;
 import org.kabeja.parser.ParseException;
 import org.kabeja.parser.Parser;
 import org.kabeja.tools.CodePageParser;
@@ -79,6 +81,7 @@ public class DXFParser implements DXFHandlerManager, Parser, DXFHandler {
     private boolean parse = false;
 
 
+    public EntityVisitor entityVisitor = null;
 
 
 	public DraftDocument parse(InputStream in, Map properties)
@@ -117,8 +120,7 @@ public class DXFParser implements DXFHandlerManager, Parser, DXFHandler {
                 buf.mark(9000);
 
                 try {
-                    BufferedReader r = new BufferedReader(new InputStreamReader(
-                                buf));
+                    BufferedReader r = new BufferedReader(new InputStreamReader(buf));
                     CodePageParser p = new CodePageParser();
                     encoding = p.parseEncoding(r);
                     buf.reset();
@@ -137,7 +139,19 @@ public class DXFParser implements DXFHandlerManager, Parser, DXFHandler {
             DXFValue value= new DXFValue();
             while ((line = in.readLine()) != null) {
                 linecount++;
-                if (key) {
+                value.lineIndex = linecount;
+// START debug.
+                if (linecount == 542082) {
+            		System.out.println(line);
+            	}
+//            	if (linecount == 542096) {
+//            		System.out.println(line);
+//            	}
+            	if (line.contains("F10-0011")) {
+            		System.out.println(linecount + " " + line);
+            	}
+// END debug.
+            	if (key) {
                     currentKey = line;
                     key = false;
                 } else {

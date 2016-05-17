@@ -6,6 +6,8 @@ public interface EntityVisitor {
 	
 	Object visit(Attrib attrib);
 	
+	Object visit(Insert insert);
+	
 	Object visit(MText mText);
 	
 	Object visit(Polyline polyline);

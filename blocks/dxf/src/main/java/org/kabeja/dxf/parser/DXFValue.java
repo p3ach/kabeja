@@ -25,6 +25,9 @@ package org.kabeja.dxf.parser;
 public final class DXFValue {
     private String value;
     private int integerValue = Integer.MAX_VALUE;
+    
+    // DM Added to track line index of value.
+    public Integer lineIndex = null;
 
     /**
      *

@@ -49,8 +49,16 @@ public class Insert extends Entity {
     public Insert() {
     }
 
+    
    
-    public Bounds getBounds() {
+    @Override
+	public Object accept(EntityVisitor entityVisitor) {
+		return entityVisitor.visit(this);
+	}
+
+
+
+	public Bounds getBounds() {
         Bounds bounds = new Bounds();
 
         // extrusion.calculateExtrusion();

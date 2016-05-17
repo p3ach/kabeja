@@ -31,7 +31,7 @@ public class CodePageParser {
     public static final String GROUPCODE = "3";
     private static final String[] prefix = { "ansi_", "dos" };
     private static final String javaPrefix = "Cp";
-
+    
     public String parseEncoding(BufferedReader reader) {
         String encoding = "";
 

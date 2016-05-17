@@ -23,6 +23,10 @@ import org.kabeja.math.Extrusion;
 
 public interface DraftEntity extends EntityAccept {
 
+	public default Integer getLineIndex() {
+		return null;
+	}
+	
 	public abstract long getID();
 
 	public abstract Type<?> getType();
