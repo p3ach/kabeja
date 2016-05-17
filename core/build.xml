@@ -52,13 +52,23 @@ Dick Murray
         <javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="classpath" failonerror="false"/>
     </target>
 
-    <target name="jar" depends="compile">
+    <target name="snapshot" depends="compile">
         <mkdir dir="${jar.dir}"/>
         <jar destfile="${jar.dir}/${ant.project.name}-${git.branch.name}-${git.branch.id}.jar" basedir="${classes.dir}">
             <manifest>
                 <attribute name="Main-Class" value="${main-class}"/>
             </manifest>
         </jar>
+    </target>
+
+    <target name="jar" depends="compile">
+        <mkdir dir="${lib.dir}/${ant.project.name}"/>
+        <jar destfile="${lib.dir}/${ant.project.name}/${ant.project.name}.jar" basedir="${classes.dir}">
+            <manifest>
+                <attribute name="Main-Class" value="${main-class}"/>
+            </manifest>
+        </jar>
+    	<echo message="${git.branch.name}-${git.branch.id}" file="${lib.dir}/${ant.project.name}/jar.txt"/>
     </target>
 
     <target name="run" depends="jar">
