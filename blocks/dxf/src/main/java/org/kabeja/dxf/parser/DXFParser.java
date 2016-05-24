@@ -140,17 +140,6 @@ public class DXFParser implements DXFHandlerManager, Parser, DXFHandler {
             while ((line = in.readLine()) != null) {
                 linecount++;
                 value.lineIndex = linecount;
-// START debug.
-                if (linecount == 542082) {
-            		System.out.println(line);
-            	}
-//            	if (linecount == 542096) {
-//            		System.out.println(line);
-//            	}
-            	if (line.contains("F10-0011")) {
-            		System.out.println(linecount + " " + line);
-            	}
-// END debug.
             	if (key) {
                     currentKey = line;
                     key = false;

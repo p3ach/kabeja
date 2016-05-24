@@ -65,10 +65,10 @@ public class DXFPolylineHandler extends AbstractEntityHandler {
      */
     public DXFPolylineHandler() {
         super();
-
-      
     }
 
+    
+    
     public void endDXFEntity() {
     }
 

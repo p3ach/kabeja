@@ -10,7 +10,11 @@ public interface EntityVisitor {
 	
 	Object visit(MText mText);
 	
+	Object visit(LWPolyline lwPolyline);
+	
 	Object visit(Polyline polyline);
 	
 	Object visit(Text text);
+	
+	Object visit(Vertex vertex);
 }
