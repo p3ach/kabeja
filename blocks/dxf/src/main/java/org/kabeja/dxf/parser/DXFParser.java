@@ -139,6 +139,9 @@ public class DXFParser implements DXFHandlerManager, Parser, DXFHandler {
             DXFValue value= new DXFValue();
             while ((line = in.readLine()) != null) {
                 linecount++;
+                if (linecount == 674293) {
+                	System.out.println("!!!");
+                }
                 value.lineIndex = linecount;
             	if (key) {
                     currentKey = line;

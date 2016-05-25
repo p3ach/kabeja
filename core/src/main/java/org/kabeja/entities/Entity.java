@@ -224,14 +224,18 @@ public abstract class Entity implements DraftEntity {
 
 	}
 
+	// DM 2016/05/25 Bug as byte is signed, see also setColor(int color), fixed by & 0xff.
 	public int getColor() {
 		if (this.lazyContainer.contains(LAZY_INDEX_COLOR)) {
-			return (int) ((byte[]) this.lazyContainer.get(LAZY_INDEX_COLOR))[0];
+//			return (int) ((byte[]) this.lazyContainer.get(LAZY_INDEX_COLOR))[0];
+			return (int) (((byte[]) this.lazyContainer.get(LAZY_INDEX_COLOR))[0] & 0xff);
 		} else {
 			return Constants.COLOR_VALUE_BY_LAYER;
 		}
 	}
 
+	// DM 2016/05/25 Bug as byte is signed, any int 127 - 255 will result in a byte with a negative value, this is fixed in getColor(int color).
+	// If AutoCAD start using color values bigger than 255 this will have some nasty silent effects!
 	public void setColor(int color) {
 		if (this.lazyContainer.contains(LAZY_INDEX_COLOR)
 				|| color != Constants.COLOR_VALUE_BY_LAYER) {
